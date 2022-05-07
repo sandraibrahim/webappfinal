@@ -1,0 +1,67 @@
+doctype=html
+html
+  head
+    title Thanks for Submission
+
+    script(type='text/javascript', href='https://code.jquery.com/jquery-3.2.1.slim.min.js', integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN", crossorigin="anonymous")
+    script(type='text/javascript', href='https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js', integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q", crossorigin="anonymous")
+    script(type='text/javascript', href='https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js', integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl", crossorigin="anonymous")
+
+    link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css', integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm",crossorigin="anonymous")
+
+    style(type="text/css").
+      body {
+        background-color: whitesmoke;
+      }
+  body
+    nav(class="navbar navbar-expand-lg navbar-dark bg-dark")
+      .container-fluid
+        a(class="navbar-brand" href="/login") Sandra's Final Project
+        button(class="navbar-toggler" type="button" 
+          data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" 
+          aria-controls="navbarNavAltMarkup" aria-expanded="false" 
+          aria-label="Toggle navigation")
+        div(class="collapse navbar-collapse" id="navbarNavAltMarkup")
+          div(class="navbar-nav")
+            a(class="nav-link" href="/mailer") Create a Contact
+            a(class="nav-link" href="/contacts") Contacts
+      //- Status Message
+      if status_message != null
+        div(class="alert alert-primary alert-dismissible fade show", role="alert") #{status_message}
+          button(type="button", class="close", data-dismiss="alert")
+
+    div(class="d-flex justify-content-center p-5")
+      div(class="card w-50")
+        h3(class="card-header text-center") Thank you for Adding a Contact!
+          div(class="text-center")
+            div(class="card-body")
+              form(action="/register" method="post")
+
+                div(class="input-group mb-3")
+                  h4  Name: 
+                    small(class="text-muted") #{prefix}  #{fname}  #{lname}
+
+                div(class="input-group mb-3")
+                  h4 Address:  
+                    small(class="text-muted") #{street}  #{city}  #{state} #{zip}
+
+                div(class="input-group mb-3")
+                  h4 Contact by Phone: 
+                    if(typeof con_phone != "undefined" || typeof con_any != "undefined")
+                      small(class="text-muted") #{phone}
+                    else
+                      small(class="text-muted") No
+
+                div(class="input-group mb-3")
+                  h4 Contact by Mail:  
+                    if(typeof con_mail != "undefined" || typeof con_any != "undefined")
+                      small(class="text-muted") #{street}  #{city}  #{state} #{zip}
+                    else
+                      small(class="text-muted") No
+
+                div(class="input-group mb-3")
+                  h4 Contact by Email:  
+                    if(typeof con_email != "undefined" || typeof con_any != "undefined")
+                      small(class="text-muted") #{email}
+                    else
+                      small(class="text-muted") No
